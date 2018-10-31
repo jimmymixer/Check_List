@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
+  resources :items do # references items controller
+    member do
+      patch :complete # references complete method in controller
+    end
+  end
+  root "items#index"
+
 end
